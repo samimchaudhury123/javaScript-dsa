@@ -1,0 +1,6 @@
+console.log("hello world")
+function addThreeNumber(a, b, c) {
+  return a + b + c
+}
+let c = addThreeNumber(1, 56, 78)
+console.log(c)
