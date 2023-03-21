@@ -1,14 +1,15 @@
-var lengthOfLongestSubstring = function(s) {
-    let max = 0
-    let begin = 0
-    let set = new Set()
-for(let end = 0; end < s.length; end++) {
-    while(set.has(s[end])) {
-        set.delete(s[begin])
-        begin = begin + 1
+
+var isValid = function(s) {
+    let map = {'(' : ')', '[': ']', '{':'}'};
+    let stack = [];
+    for(let ch of s){
+        if(map[ch]){
+            stack.push(map[ch]);
+        }
+        else if(stack.length > 0 && stack[stack.length-1] == ch){
+            stack.pop();
+        }
+        else return false;
     }
-    set.add(s[end])
-    max = Math.max(max, end - begin + 1)
-}
-return max
+    return stack.length == 0;
 };
